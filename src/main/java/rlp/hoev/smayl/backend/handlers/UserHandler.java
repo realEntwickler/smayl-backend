@@ -25,10 +25,10 @@ import java.util.UUID;
 
 public class UserHandler {
 
-    private List<ISmaylUser> registeredUsers;
+    private final List<ISmaylUser> registeredUsers;
 
     public UserHandler() {
-        this.registeredUsers = new ArrayList<ISmaylUser>();
+        this.registeredUsers = new ArrayList<>();
     }
 
     /**
@@ -51,8 +51,8 @@ public class UserHandler {
 
     /**
      * @param username The username of searched user
-     * @return Instance of registered ISmaylUser when found. If not, then null.
-     * @exception NullPointerException
+     * @return Instance of registered ISmaylUser when found
+     * @exception NullPointerException When user wasn't found.
      */
     public ISmaylUser getUserByUsername (String username) {
         return registeredUsers.stream().filter(user -> user.getUsername().equalsIgnoreCase(username)).findFirst().orElse(null);
@@ -60,8 +60,8 @@ public class UserHandler {
 
     /**
      * @param email The email address of searched user
-     * @return Instance of registered ISmaylUser when found. If not, then null.
-     * @exception NullPointerException
+     * @return Instance of registered ISmaylUser when found.
+     * @exception NullPointerException When user wasn't found.
      */
     public ISmaylUser getUserByEmail (String email) {
         return registeredUsers.stream().filter(user -> user.getEmailAddress().equalsIgnoreCase(email)).findFirst().orElse(null);
@@ -69,8 +69,8 @@ public class UserHandler {
 
     /**
      * @param uniqueId The UUID of searched user
-     * @return Instance of registered ISmaylUser when found. If not, then null.
-     * @exception NullPointerException
+     * @return Instance of registered ISmaylUser when found.
+     * @exception NullPointerException When user wasn't found.
      */
     public ISmaylUser getUserByUniqueId (UUID uniqueId) {
         return registeredUsers.stream().filter(user -> user.getUniqueId().equals(uniqueId)).findFirst().orElse(null);
