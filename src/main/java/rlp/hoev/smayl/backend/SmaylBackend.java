@@ -17,6 +17,7 @@
 
 package rlp.hoev.smayl.backend;
 
+import rlp.hoev.smayl.backend.controllers.UserController;
 import rlp.hoev.smayl.backend.handlers.UserHandler;
 
 public class SmaylBackend {
@@ -24,10 +25,16 @@ public class SmaylBackend {
     private static SmaylBackend instance;
 
     private final UserHandler userHandler;
+    private final UserController userController;
 
     public SmaylBackend() {
         instance = this;
         this.userHandler = new UserHandler();
+        this.userController = new UserController();
+    }
+
+    public UserController getUserController() {
+        return userController;
     }
 
     public UserHandler getUserHandler() {

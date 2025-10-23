@@ -30,7 +30,9 @@ public class UserHandler {
     public UserHandler() {
         this.registeredUsers = new ArrayList<>();
 
-        addUser(new ISmaylUser("Administrator", "admin", "n.a.", "Administrator", true));
+        if (addUser(new ISmaylUser("Administrator", "admin", "n.a.", "Administrator", true))) {
+            System.out.println("[SMAYL] User has been registered successfully.");
+        }
     }
 
     /**

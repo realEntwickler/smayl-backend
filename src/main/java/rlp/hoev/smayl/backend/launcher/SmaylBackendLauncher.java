@@ -21,7 +21,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import rlp.hoev.smayl.backend.SmaylBackend;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"rlp.hoev.smayl.backend"})
 public class SmaylBackendLauncher {
 
     public static void main(String[] arguments) {
