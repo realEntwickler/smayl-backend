@@ -22,7 +22,7 @@ import java.util.UUID;
 public class ISmaylUser {
 
     private final long creationTimestamp;
-    private final UUID uniqueId;
+    private final String uniqueId;
     private String username;
     private String password; //TODO: Later being crypted
     private String emailAddress;
@@ -31,7 +31,7 @@ public class ISmaylUser {
 
     public ISmaylUser(String username, String password, String emailAddress, String displayName, boolean enhancedPriviliges) {
         this.creationTimestamp = System.currentTimeMillis();
-        this.uniqueId = UUID.randomUUID();
+        this.uniqueId = UUID.randomUUID().toString();
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
@@ -40,7 +40,7 @@ public class ISmaylUser {
     }
 
     public UUID getUniqueId() {
-        return uniqueId;
+        return UUID.fromString(uniqueId);
     }
 
     public boolean hasEnhancedPriviliges() {
