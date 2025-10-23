@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>rlp.hoev.smayl</groupId>
-    <artifactId>smayl-backend</artifactId>
+    <artifactId>backend</artifactId>
     <version>2.0.1-SNAPSHOT</version>
 
     <properties>
