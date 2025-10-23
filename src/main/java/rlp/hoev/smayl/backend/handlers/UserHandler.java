@@ -33,6 +33,8 @@ public class UserHandler {
         if (addUser(new ISmaylUser("Administrator", "admin", "n.a.", "Administrator", true))) {
             System.out.println("[SMAYL] User has been registered successfully.");
         }
+
+        addUser(new ISmaylUser("n.koertingebe", "1234", "n.n", "Körting-Eberhardt, Nils Kevin", true));
     }
 
     /**
