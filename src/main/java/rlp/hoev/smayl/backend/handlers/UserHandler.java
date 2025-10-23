@@ -29,6 +29,8 @@ public class UserHandler {
 
     public UserHandler() {
         this.registeredUsers = new ArrayList<>();
+
+        addUser(new ISmaylUser("Administrator", "admin", "n.a.", "Administrator", true));
     }
 
     /**
