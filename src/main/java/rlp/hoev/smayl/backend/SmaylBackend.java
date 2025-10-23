@@ -17,12 +17,21 @@
 
 package rlp.hoev.smayl.backend;
 
+import rlp.hoev.smayl.backend.handlers.UserHandler;
+
 public class SmaylBackend {
 
     private static SmaylBackend instance;
 
+    private final UserHandler userHandler;
+
     public SmaylBackend() {
         instance = this;
+        this.userHandler = new UserHandler();
+    }
+
+    public UserHandler getUserHandler() {
+        return userHandler;
     }
 
     public static SmaylBackend getInstance() {
