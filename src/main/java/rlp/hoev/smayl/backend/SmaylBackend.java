@@ -17,7 +17,9 @@
 
 package rlp.hoev.smayl.backend;
 
+import rlp.hoev.smayl.backend.controllers.NewsController;
 import rlp.hoev.smayl.backend.controllers.UserController;
+import rlp.hoev.smayl.backend.handlers.NewsHandler;
 import rlp.hoev.smayl.backend.handlers.UserHandler;
 
 public class SmaylBackend {
@@ -26,11 +28,23 @@ public class SmaylBackend {
 
     private final UserHandler userHandler;
     private final UserController userController;
+    private final NewsHandler newsHandler;
+    private final NewsController newsController;
 
     public SmaylBackend() {
         instance = this;
         this.userHandler = new UserHandler();
         this.userController = new UserController();
+        this.newsHandler = new NewsHandler();
+        this.newsController = new NewsController();
+    }
+
+    public NewsController getNewsController() {
+        return newsController;
+    }
+
+    public NewsHandler getNewsHandler() {
+        return newsHandler;
     }
 
     public UserController getUserController() {
