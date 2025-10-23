@@ -17,12 +17,17 @@
 
 package rlp.hoev.smayl.backend.launcher;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import rlp.hoev.smayl.backend.SmaylBackend;
 
+@SpringBootApplication
 public class SmaylBackendLauncher {
 
-    static void main() {
+    static void main(String[] arguments) {
         printLauncherMessage();
+        SpringApplication.run(SmaylBackendLauncher.class, arguments);
+        System.out.println("[SMAYL] Spring Boot has been loaded.");
         new SmaylBackend();
     }
 
