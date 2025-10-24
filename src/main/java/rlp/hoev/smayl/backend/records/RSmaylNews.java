@@ -17,8 +17,6 @@
 
 package rlp.hoev.smayl.backend.records;
 
-import rlp.hoev.smayl.backend.interfaces.ISmaylUser;
-
 import java.util.UUID;
 
 public record RSmaylNews(String title, String description, UUID authorUniqueId, long creationTimestamp, UUID uniqueId) {
