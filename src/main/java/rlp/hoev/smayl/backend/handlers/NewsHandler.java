@@ -39,6 +39,21 @@ public class NewsHandler {
         System.out.println("[SMAYL] Test News successfully added.");
     }
 
+    /**
+     *
+     * @param uniqueId UUID of to searched news item.
+     * @return ISmaylNews instance when found
+     * @exception NullPointerException When no news was found.
+     */
+    public ISmaylNews getNewsByUniqueId(UUID uniqueId) {
+        return newsList.stream().filter(iSmaylNews -> iSmaylNews.getUniqueId().equals(uniqueId)).findFirst().orElse(null);
+    }
+
+    /**
+     *
+     * @param news News to add.
+     * @return Boolean whether action was successful.
+     */
     public boolean addNews(ISmaylNews news) {
         return newsList.add(news);
     }
