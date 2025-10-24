@@ -25,7 +25,6 @@ import rlp.hoev.smayl.backend.SmaylBackend;
 import rlp.hoev.smayl.backend.exceptions.NewsNotFoundException;
 import rlp.hoev.smayl.backend.exceptions.ParameterException;
 import rlp.hoev.smayl.backend.interfaces.ISmaylNews;
-import rlp.hoev.smayl.backend.interfaces.ISmaylUser;
 
 import java.util.ArrayList;
 import java.util.List;
