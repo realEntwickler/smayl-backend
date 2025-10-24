@@ -18,7 +18,7 @@
 package rlp.hoev.smayl.backend.handlers;
 
 import rlp.hoev.smayl.backend.SmaylBackend;
-import rlp.hoev.smayl.backend.records.RSmaylNews;
+import rlp.hoev.smayl.backend.interfaces.ISmaylNews;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,20 +26,24 @@ import java.util.UUID;
 
 public class NewsHandler {
 
-    private final List<RSmaylNews> newsList;
+    private final List<ISmaylNews> newsList;
 
     public NewsHandler() {
         this.newsList = new ArrayList<>();
 
-        addNews(new RSmaylNews("Test Titel", "Dies ist eine Test News.", SmaylBackend.getInstance().getUserHandler().getUserByUsername("n.koertingebe").getUniqueId(), System.currentTimeMillis(), UUID.randomUUID()));
+        UUID authorUniqueId = SmaylBackend.getInstance().getUserHandler().getUserByUsername("n.koertingebe").getUniqueId();
+        addNews(new ISmaylNews("Neuer Semesterstart an der HÖV Rheinland-Pfalz", "Am Campus Mayen startet das neue Wintersemester mit zahlreichen Einführungsveranstaltungen und spannenden Projekten für Erstsemester.", authorUniqueId, System.currentTimeMillis()));
+        addNews(new ISmaylNews("Digitalisierung in der öffentlichen Verwaltung", "Das Land Rheinland-Pfalz treibt die Modernisierung der Verwaltung mit neuen E-Government-Projekten weiter voran.", authorUniqueId, System.currentTimeMillis()));
+        addNews(new ISmaylNews("Neue Mensa-Angebote für Studierende", "Ab November gibt es täglich wechselnde vegetarische und vegane Gerichte. Feedback kann über die Campus-App gegeben werden.", authorUniqueId, System.currentTimeMillis()));
+
         System.out.println("[SMAYL] Test News successfully added.");
     }
 
-    public boolean addNews(RSmaylNews news) {
+    public boolean addNews(ISmaylNews news) {
         return newsList.add(news);
     }
 
-    public List<RSmaylNews> getNewsList() {
+    public List<ISmaylNews> getNewsList() {
         return newsList;
     }
 }

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rlp.hoev.smayl.backend.SmaylBackend;
-import rlp.hoev.smayl.backend.records.RSmaylNews;
+import rlp.hoev.smayl.backend.interfaces.ISmaylNews;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class NewsController {
     }
 
     @GetMapping("/get")
-    public List<RSmaylNews> getNews() {
+    public List<ISmaylNews> getNews() {
         return SmaylBackend.getInstance().getNewsHandler().getNewsList();
     }
 }
