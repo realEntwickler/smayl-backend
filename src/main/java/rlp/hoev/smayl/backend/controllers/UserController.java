@@ -30,7 +30,6 @@ import rlp.hoev.smayl.backend.services.UserService;
 @RequestMapping("/users")
 public class UserController {
 
-
     private final UserService userService;
 
     public UserController(UserService userService) {

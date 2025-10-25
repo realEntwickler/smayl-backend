@@ -33,6 +33,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public boolean isUsernameAvailable(String username) {
+        return userRepository.findByUsername(username) == null;
+    }
+
     public void saveUser(SmaylUser smaylUser) {
         userRepository.save(smaylUser);
     }

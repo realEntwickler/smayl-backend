@@ -28,7 +28,7 @@ public class SmaylBackendApplication {
 
         SpringApplication.run(SmaylBackendApplication.class, arguments);
 
-        System.out.println("[SMAYL] Spring Boot has been loaded.");
+        System.out.println("[SMAYL] SMAYL Backend has been started up.");
     }
 
     private static void printLauncherMessage() {
