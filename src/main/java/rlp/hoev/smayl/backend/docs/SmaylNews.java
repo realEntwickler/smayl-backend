@@ -24,7 +24,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SmaylNews {
 
     @Id
-    private String id;
+    private String _id;
 
     private String title, description;
     private String authorId;
@@ -38,7 +38,7 @@ public class SmaylNews {
     }
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public String getTitle() {

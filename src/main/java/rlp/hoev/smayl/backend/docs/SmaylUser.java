@@ -24,7 +24,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SmaylUser {
 
     @Id
-    private String id;
+    private String _id;
 
     private String username, password, emailAddress, displayName;
     private final long timestamp;
@@ -40,7 +40,7 @@ public class SmaylUser {
     }
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public long getTimestamp() {
