@@ -28,7 +28,6 @@ public class SmaylBackendApplication {
 
         SpringApplication.run(SmaylBackendApplication.class, arguments);
 
-        System.out.println("[SMAYL] SMAYL Backend has been started up.");
     }
 
     private static void printLauncherMessage() {
@@ -38,5 +37,6 @@ public class SmaylBackendApplication {
         System.out.println("  \\___ \\| |\\/| | / /\\ \\\\   / | |      |  _ < / _` |/ __| |/ / _ \\ '_ \\ / _` |");
         System.out.println("  ____) | |  | |/ ____ \\| |  | |____  | |_) | (_| | (__|   <  __/ | | | (_| |");
         System.out.println(" |_____/|_|  |_/_/    \\_\\_|  |______| |____/ \\__,_|\\___|_|\\_\\___|_| |_|\\__,_|");
+        System.out.println("[SMAYL] SMAYL Backend has been started up.");
     }
 }

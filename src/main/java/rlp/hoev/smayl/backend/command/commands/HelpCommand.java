@@ -43,7 +43,7 @@ public class HelpCommand implements ConsoleCommand{
     public void onCommand(String[] arguments) {
         System.out.println("[SMAYL] The following commands are supported:");
         commandRegistry.getCommandList().forEach(consoleCommand -> {
-            System.out.println("» \"" + consoleCommand.getName() + "\" - " + consoleCommand.getDescription());
+            System.out.println("> \"" + consoleCommand.getName() + "\" - " + consoleCommand.getDescription());
         });
     }
 }

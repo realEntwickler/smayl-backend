@@ -53,7 +53,7 @@ public class UsersCommand implements ConsoleCommand{
             if (arguments[0].equals("list")) {
                 System.out.println("[SMAYL - Users] Following users are registered:");
                 userService.findAll().forEach(smaylUser -> {
-                    System.out.println(smaylUser.getUsername() + " (" + smaylUser.getId() + "): " + smaylUser.getDisplayName() + " [EP: " + smaylUser.isEnhancedPriviliges() + "]");
+                    System.out.println("> " + smaylUser.getUsername() + " (" + smaylUser.getId() + "): " + smaylUser.getDisplayName() + " [EP: " + smaylUser.isEnhancedPriviliges() + "]");
                 });
             }
         } else if (arguments.length == 2) {

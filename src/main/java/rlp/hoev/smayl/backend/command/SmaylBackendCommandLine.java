@@ -18,6 +18,7 @@
 package rlp.hoev.smayl.backend.command;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -26,9 +27,12 @@ import java.util.Scanner;
 public class SmaylBackendCommandLine implements CommandLineRunner {
 
     private final CommandRegistry commandRegistry;
+    private final ConfigurableApplicationContext configurableApplicationContext;
+    private volatile boolean running = true;
 
-    public SmaylBackendCommandLine(CommandRegistry commandRegistry) {
+    public SmaylBackendCommandLine(CommandRegistry commandRegistry, ConfigurableApplicationContext configurableApplicationContext) {
         this.commandRegistry = commandRegistry;
+        this.configurableApplicationContext = configurableApplicationContext;
     }
 
     @Override
@@ -36,10 +40,27 @@ public class SmaylBackendCommandLine implements CommandLineRunner {
         System.out.println("[SMAYL] Commando system started successfully. Type \"help\"");
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("» ");
+        Thread shutdownWatcher = new Thread(() -> {
+            while (configurableApplicationContext.isActive()) {
+                try { Thread.sleep(100); } catch (InterruptedException ignored) {}
+            }
+            running = false;
+            try { scanner.close(); } catch (Exception ignored) {}
+        });
+        shutdownWatcher.setDaemon(true);
+        shutdownWatcher.start();
+
+        while (running) {
+            System.out.print("» ");
+            if (!scanner.hasNextLine()) break;
             String command = scanner.nextLine();
             commandRegistry.executeCommand(command);
         }
+
+        System.out.println("[SMAYL] Commando system stopped successfully.");
+    }
+
+    public void stopLoop() {
+        this.running = false;
     }
 }
