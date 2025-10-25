@@ -26,25 +26,25 @@ public class SmaylBackend {
 
     private static SmaylBackend instance;
 
+    private final NewsHandler newsHandler;
     private final UserHandler userHandler;
     private final UserController userController;
-    private final NewsHandler newsHandler;
     private final NewsController newsController;
 
     public SmaylBackend() {
         instance = this;
+        this.newsHandler = new NewsHandler();
         this.userHandler = new UserHandler();
         this.userController = new UserController();
-        this.newsHandler = new NewsHandler();
         this.newsController = new NewsController();
-    }
-
-    public NewsController getNewsController() {
-        return newsController;
     }
 
     public NewsHandler getNewsHandler() {
         return newsHandler;
+    }
+
+    public NewsController getNewsController() {
+        return newsController;
     }
 
     public UserController getUserController() {

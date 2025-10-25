@@ -34,33 +34,27 @@ import java.util.UUID;
 @RequestMapping("/news")
 public class NewsController {
 
-    public NewsController() {
-
-    }
-
     @GetMapping("/get")
     public List<ISmaylNews> getNews() {
-        return SmaylBackend.getInstance().getNewsHandler().getNewsList();
+        return SmaylBackend.getInstance().getNewsService().getNews();
     }
 
     @GetMapping("/getids")
     public List<UUID> getIds() {
-        List<UUID> uuidList = new ArrayList<>();
-        SmaylBackend.getInstance().getNewsHandler().getNewsList().forEach(news -> uuidList.add(news.getUniqueId()));
-        return uuidList;
+        return SmaylBackend.getInstance().getNewsService().getNewsIds();
     }
 
-    @GetMapping("/{newsId}")
-    public ISmaylNews getNews(@PathVariable(value = "newsId", required = true) String newsId) {
-        if (newsId == null)
-            throw new ParameterException("News Id is null");
-
-        ISmaylNews newsByUniqueId = SmaylBackend.getInstance().getNewsHandler().getNewsByUniqueId(UUID.fromString(newsId));
-
-        if (newsByUniqueId != null) {
-            return newsByUniqueId;
-        } else {
-            throw new NewsNotFoundException("No news found by given newsId.");
-        }
-    }
+//    @GetMapping("/{newsId}")
+//    public ISmaylNews getNews(@PathVariable(value = "newsId", required = true) String newsId) {
+//        if (newsId == null)
+//            throw new ParameterException("News Id is null");
+//
+//        ISmaylNews news = SmaylBackend.getInstance().getNewsService().findNewsByUniqueId(UUID.fromString(newsId));
+//
+//        if (news != null) {
+//            return news;
+//        } else {
+//            throw new NewsNotFoundException("No news found by given newsId.");
+//        }
+//    }
 }

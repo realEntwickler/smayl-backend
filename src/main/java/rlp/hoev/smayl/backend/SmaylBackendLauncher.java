@@ -3,7 +3,7 @@
  *  * (c) 2025 Nils Kevin Koerting-Eberhardt (realEntwickler)
  *  *
  *  * File: SmaylBackendLauncher.java
- *  * Created on: 23.10.25, 13:55
+ *  * Created on: 25.10.25, 10:35
  *  *
  *  * This file is part of the project "smayl-backend".
  *  *
@@ -15,13 +15,12 @@
  *
  */
 
-package rlp.hoev.smayl.backend.launcher;
+package rlp.hoev.smayl.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import rlp.hoev.smayl.backend.SmaylBackend;
 
-@SpringBootApplication(scanBasePackages = {"rlp.hoev.smayl.backend"})
+@SpringBootApplication()
 public class SmaylBackendLauncher {
 
     public static void main(String[] arguments) {
