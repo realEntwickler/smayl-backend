@@ -49,6 +49,7 @@ public class UsersCommand implements ConsoleCommand{
             System.out.println("[SMAYL] Usage of \"users\":");
             System.out.println("> users list - Shows you a list of all users");
             System.out.println("> users add <Username> <Email> <Displayname> <enhancedPriviliges> - Creates a new user");
+            System.out.println("> users remove <Username> -  Removes a user");
         } else if (arguments.length == 1) {
             if (arguments[0].equals("list")) {
                 System.out.println("[SMAYL - Users] Following users are registered:");
@@ -57,7 +58,15 @@ public class UsersCommand implements ConsoleCommand{
                 });
             }
         } else if (arguments.length == 2) {
-
+            if (arguments[0].equals("remove")) {
+                SmaylUser userByUsername = userService.getUserByUsername(arguments[1]);
+                if (userByUsername != null) {
+                    userService.deleteUser(userByUsername);
+                    System.out.println("[SMAYL - Users] The user \"" + userByUsername.getUsername() + "\" has been successfully deleted.");
+                } else {
+                    System.out.println("[SMAYL - Users] The given user wasn't found!");
+                }
+            }
         } else if (arguments.length == 3) {
 
         } else if (arguments.length == 4) {

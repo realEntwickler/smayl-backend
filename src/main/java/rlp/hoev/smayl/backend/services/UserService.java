@@ -33,6 +33,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public void deleteUser(SmaylUser smaylUser) {
+        userRepository.delete(smaylUser);
+    }
+
     public boolean isUsernameAvailable(String username) {
         return userRepository.findByUsername(username) == null;
     }
