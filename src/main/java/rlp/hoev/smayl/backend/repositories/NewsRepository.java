@@ -2,8 +2,8 @@
  *
  *  * (c) 2025 Nils Kevin Koerting-Eberhardt (realEntwickler)
  *  *
- *  * File: NewsHandler.java
- *  * Created on: 25.10.25, 11:07
+ *  * File: NewsRepository.java
+ *  * Created on: 25.10.25, 11:22
  *  *
  *  * This file is part of the project "smayl-backend".
  *  *
@@ -15,20 +15,14 @@
  *
  */
 
-package rlp.hoev.smayl.backend.handlers;
+package rlp.hoev.smayl.backend.repositories;
 
-import com.google.gson.Gson;
-import rlp.hoev.smayl.backend.interfaces.ISmaylNews;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import rlp.hoev.smayl.backend.docs.SmaylNews;
 
-public class NewsHandler {
+import java.util.UUID;
 
-    private final Gson gson;
-
-    public NewsHandler() {
-        this.gson = new Gson();
-    }
-
-    public void saveNews(ISmaylNews news) {
-
-    }
+@Repository
+public interface NewsRepository extends MongoRepository<SmaylNews, String> {
 }

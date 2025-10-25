@@ -2,8 +2,8 @@
  *
  *  * (c) 2025 Nils Kevin Koerting-Eberhardt (realEntwickler)
  *  *
- *  * File: ISmaylUser.java
- *  * Created on: 23.10.25, 20:12
+ *  * File: SmaylUser.java
+ *  * Created on: 25.10.25, 11:31
  *  *
  *  * This file is part of the project "smayl-backend".
  *  *
@@ -15,44 +15,36 @@
  *
  */
 
-package rlp.hoev.smayl.backend.interfaces;
+package rlp.hoev.smayl.backend.docs;
 
-import java.util.UUID;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class ISmaylUser {
+@Document(collection = "users")
+public class SmaylUser {
 
-    private final long creationTimestamp;
-    private final String uniqueId;
-    private String username;
-    private String password; //TODO: Later being crypted
-    private String emailAddress;
-    private String displayName;
+    @Id
+    private String id;
+
+    private String username, password, emailAddress, displayName;
+    private final long timestamp;
     private boolean enhancedPriviliges;
 
-    public ISmaylUser(String username, String password, String emailAddress, String displayName, boolean enhancedPriviliges) {
-        this.creationTimestamp = System.currentTimeMillis();
-        this.uniqueId = UUID.randomUUID().toString();
+    public SmaylUser(String username, String password, String emailAddress, String displayName, long timestamp, boolean enhancedPriviliges) {
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
         this.displayName = displayName;
+        this.timestamp = timestamp;
         this.enhancedPriviliges = enhancedPriviliges;
     }
 
-    public UUID getUniqueId() {
-        return UUID.fromString(uniqueId);
+    public String getId() {
+        return id;
     }
 
-    public boolean hasEnhancedPriviliges() {
-        return enhancedPriviliges;
-    }
-
-    public void setEnhancedPriviliges(boolean enhancedPriviliges) {
-        this.enhancedPriviliges = enhancedPriviliges;
-    }
-
-    public long getCreationTimestamp() {
-        return creationTimestamp;
+    public long getTimestamp() {
+        return timestamp;
     }
 
     public String getUsername() {
@@ -85,5 +77,13 @@ public class ISmaylUser {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public boolean isEnhancedPriviliges() {
+        return enhancedPriviliges;
+    }
+
+    public void setEnhancedPriviliges(boolean enhancedPriviliges) {
+        this.enhancedPriviliges = enhancedPriviliges;
     }
 }

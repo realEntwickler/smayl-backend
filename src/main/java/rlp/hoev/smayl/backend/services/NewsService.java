@@ -17,28 +17,33 @@
 
 package rlp.hoev.smayl.backend.services;
 
-import rlp.hoev.smayl.backend.interfaces.ISmaylNews;
+import org.springframework.stereotype.Service;
+import rlp.hoev.smayl.backend.docs.SmaylNews;
+import rlp.hoev.smayl.backend.repositories.NewsRepository;
 
 import java.util.List;
-import java.util.UUID;
 
+@Service
 public class NewsService {
 
-    public NewsService() {
+    private final NewsRepository newsRepository;
+
+    public NewsService(NewsRepository newsRepository) {
 //        insertNews(new ISmaylNews("Neuer Semesterstart an der HÖV Rheinland-Pfalz", "Am Campus Mayen startet das neue Wintersemester mit zahlreichen Einführungsveranstaltungen und spannenden Projekten für Erstsemester.", authorUniqueId, System.currentTimeMillis()));
 //        insertNews(new ISmaylNews("Digitalisierung in der öffentlichen Verwaltung", "Das Land Rheinland-Pfalz treibt die Modernisierung der Verwaltung mit neuen E-Government-Projekten weiter voran.", authorUniqueId, System.currentTimeMillis()));
 //        insertNews(new ISmaylNews("Neue Mensa-Angebote für Studierende", "Ab November gibt es täglich wechselnde vegetarische und vegane Gerichte. Feedback kann über die Campus-App gegeben werden.", authorUniqueId, System.currentTimeMillis()));
+        this.newsRepository = newsRepository;
     }
 
-    public void insertNews(ISmaylNews news) {
-        newsRepository.save(news);
+    public SmaylNews getNewsById(String id) {
+        return newsRepository.findById(id).orElse(null);
     }
 
-    public List<ISmaylNews> getNews() {
+    public List<SmaylNews> getAllNews() {
         return newsRepository.findAll();
     }
 
-    public List<UUID> getNewsIds() {
-        return getNews().stream().map(ISmaylNews::getUniqueId).toList();
+    public void saveNews(SmaylNews news) {
+        newsRepository.save(news);
     }
 }

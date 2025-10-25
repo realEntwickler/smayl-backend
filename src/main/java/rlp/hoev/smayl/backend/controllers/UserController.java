@@ -17,36 +17,40 @@
 
 package rlp.hoev.smayl.backend.controllers;
 
-import org.springframework.web.bind.annotation.*;
-import rlp.hoev.smayl.backend.SmaylBackend;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import rlp.hoev.smayl.backend.docs.SmaylUser;
 import rlp.hoev.smayl.backend.exceptions.ParameterException;
 import rlp.hoev.smayl.backend.exceptions.UserNotFoundException;
-import rlp.hoev.smayl.backend.interfaces.ISmaylUser;
-
-import java.util.UUID;
+import rlp.hoev.smayl.backend.services.UserService;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    public UserController() {
 
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/find")
-    public ISmaylUser findUser(
+    public SmaylUser findUser(
             @RequestParam(required = false) String username,
             @RequestParam(required = false) String email,
-            @RequestParam(required = false) String uniqueId) {
-        ISmaylUser user;
+            @RequestParam(required = false) String id) {
+        SmaylUser user;
         if (username != null) {
-            user = SmaylBackend.getInstance().getUserHandler().getUserByUsername(username);
+            user = userService.getUserByUsername(username);
         } else if (email != null) {
-            user = SmaylBackend.getInstance().getUserHandler().getUserByEmail(email);
-        } else if (uniqueId != null) {
-            user = SmaylBackend.getInstance().getUserHandler().getUserByUniqueId(UUID.fromString(uniqueId));
+            user = userService.getUserByEmail(email);
+        } else if (id != null) {
+            user = userService.getUserById(id);
         } else {
-            throw new ParameterException("Username or Email or Unique Id is null");
+            throw new ParameterException("Username or Email or Id is null");
         }
         if (user == null)
             throw new UserNotFoundException("User not found");
