@@ -35,6 +35,10 @@ public class NewsService {
         this.newsRepository = newsRepository;
     }
 
+    public void deleteNews(SmaylNews news) {
+        newsRepository.delete(news);
+    }
+
     public SmaylNews getNewsById(String id) {
         return newsRepository.findById(id).orElse(null);
     }
