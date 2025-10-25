@@ -63,12 +63,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.11.0</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -80,7 +74,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>rlp.hoev.smayl.backend.SmaylBackendLauncher</mainClass>
+                            <mainClass>rlp.hoev.smayl.backend.SmaylBackendApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

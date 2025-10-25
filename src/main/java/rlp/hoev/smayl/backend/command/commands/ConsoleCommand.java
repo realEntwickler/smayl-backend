@@ -2,8 +2,8 @@
  *
  *  * (c) 2025 Nils Kevin Koerting-Eberhardt (realEntwickler)
  *  *
- *  * File: NewsHandler.java
- *  * Created on: 25.10.25, 11:07
+ *  * File: ConsoleCommand.java
+ *  * Created on: 25.10.25, 12:40
  *  *
  *  * This file is part of the project "smayl-backend".
  *  *
@@ -15,20 +15,11 @@
  *
  */
 
-package rlp.hoev.smayl.backend.handlers;
+package rlp.hoev.smayl.backend.command.commands;
 
-import com.google.gson.Gson;
-import rlp.hoev.smayl.backend.interfaces.ISmaylNews;
+public interface ConsoleCommand {
 
-public class NewsHandler {
-
-    private final Gson gson;
-
-    public NewsHandler() {
-        this.gson = new Gson();
-    }
-
-    public void saveNews(ISmaylNews news) {
-
-    }
+    String getName();
+    String getDescription();
+    void onCommand(String[] arguments);
 }

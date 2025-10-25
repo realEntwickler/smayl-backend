@@ -21,40 +21,41 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import rlp.hoev.smayl.backend.SmaylBackend;
+import rlp.hoev.smayl.backend.docs.SmaylNews;
 import rlp.hoev.smayl.backend.exceptions.NewsNotFoundException;
 import rlp.hoev.smayl.backend.exceptions.ParameterException;
-import rlp.hoev.smayl.backend.interfaces.ISmaylNews;
+import rlp.hoev.smayl.backend.services.NewsService;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/news")
 public class NewsController {
 
+    private final NewsService newsService;
+
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
+    }
+
     @GetMapping("/get")
-    public List<ISmaylNews> getNews() {
-        return SmaylBackend.getInstance().getNewsService().getNews();
+    public List<SmaylNews> getNews() {
+        return newsService.getAllNews();
     }
 
     @GetMapping("/getids")
-    public List<UUID> getIds() {
-        return SmaylBackend.getInstance().getNewsService().getNewsIds();
+    public List<String> getIds() {
+        return newsService.getAllNews().stream().map(SmaylNews::getId).toList();
     }
 
-//    @GetMapping("/{newsId}")
-//    public ISmaylNews getNews(@PathVariable(value = "newsId", required = true) String newsId) {
-//        if (newsId == null)
-//            throw new ParameterException("News Id is null");
-//
-//        ISmaylNews news = SmaylBackend.getInstance().getNewsService().findNewsByUniqueId(UUID.fromString(newsId));
-//
-//        if (news != null) {
-//            return news;
-//        } else {
-//            throw new NewsNotFoundException("No news found by given newsId.");
-//        }
-//    }
+    @GetMapping("/{id}")
+    public SmaylNews getNewsById(@PathVariable String id) {
+        if (id == null) {
+            throw new ParameterException("The given news id is null.");
+        }
+        SmaylNews news = newsService.getNewsById(id);
+
+        if (news != null) return news;
+        else throw new NewsNotFoundException("The news with id " + id + " was not found.");
+    }
 }
