@@ -30,12 +30,12 @@ public class SmaylUser {
     private final long timestamp;
     private boolean enhancedPriviliges;
 
-    public SmaylUser(String username, String password, String emailAddress, String displayName, long timestamp, boolean enhancedPriviliges) {
+    public SmaylUser(String username, String password, String emailAddress, String displayName, boolean enhancedPriviliges) {
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
         this.displayName = displayName;
-        this.timestamp = timestamp;
+        this.timestamp = System.currentTimeMillis();
         this.enhancedPriviliges = enhancedPriviliges;
     }
 
