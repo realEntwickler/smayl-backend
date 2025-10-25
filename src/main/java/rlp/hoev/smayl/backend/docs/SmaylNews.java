@@ -20,8 +20,6 @@ package rlp.hoev.smayl.backend.docs;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.UUID;
-
 @Document(collection = "news")
 public class SmaylNews {
 

@@ -24,12 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 import rlp.hoev.smayl.backend.docs.SmaylNews;
 import rlp.hoev.smayl.backend.exceptions.NewsNotFoundException;
 import rlp.hoev.smayl.backend.exceptions.ParameterException;
-import rlp.hoev.smayl.backend.repositories.NewsRepository;
 import rlp.hoev.smayl.backend.services.NewsService;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/news")

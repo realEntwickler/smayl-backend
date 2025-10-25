@@ -21,8 +21,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import rlp.hoev.smayl.backend.docs.SmaylNews;
 
-import java.util.UUID;
-
 @Repository
 public interface NewsRepository extends MongoRepository<SmaylNews, String> {
 }
