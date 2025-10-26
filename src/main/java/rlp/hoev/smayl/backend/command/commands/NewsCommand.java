@@ -18,6 +18,7 @@
 package rlp.hoev.smayl.backend.command.commands;
 
 import org.springframework.stereotype.Component;
+import rlp.hoev.smayl.backend.docs.SmaylNews;
 import rlp.hoev.smayl.backend.docs.SmaylUser;
 import rlp.hoev.smayl.backend.services.NewsService;
 import rlp.hoev.smayl.backend.services.UserService;
@@ -49,13 +50,26 @@ public class NewsCommand implements ConsoleCommand{
         if (arguments.length == 0) {
             System.out.println("[SMAYL] Usage of \"news\":");
             System.out.println("> news list - Displays all registered news");
+            System.out.println("> news delete <ID> - Deletes a news");
         } else if (arguments.length == 1) {
             if (arguments[0].equals("list")) {
                 System.out.println("[SMAYL] The following news are registered:");
                 newsService.getAllNews().forEach(smaylNews -> {
                     SmaylUser author = userService.getUserById(smaylNews.getAuthorId());
-                    System.out.println("> " +  smaylNews.getTitle() + " - " + author.getUsername());
+                    System.out.println("> " +  smaylNews.getId() + ": " + smaylNews.getTitle() + " (" + author.getUsername() + ")");
                 });
+            }
+        } else if (arguments.length == 2) {
+            if (arguments[0].equals("delete")) {
+                String id =  arguments[1];
+                SmaylNews newsById = newsService.getNewsById(id);
+
+                if (newsById != null) {
+                    newsService.deleteNews(newsById);
+                    System.out.println("[SMAYL] The news with the id \"" + newsById.getId() + "\" has been successfully deleted.");
+                } else {
+                    System.out.println("[SMAYL] The given news does not exist.");
+                }
             }
         }
     }
