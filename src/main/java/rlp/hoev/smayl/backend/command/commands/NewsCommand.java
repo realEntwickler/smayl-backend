@@ -51,6 +51,7 @@ public class NewsCommand implements ConsoleCommand{
             System.out.println("[SMAYL] Usage of \"news\":");
             System.out.println("> news list - Displays all registered news");
             System.out.println("> news delete <ID> - Deletes a news");
+            System.out.println("> news add - Adds a testing news");
         } else if (arguments.length == 1) {
             if (arguments[0].equals("list")) {
                 System.out.println("[SMAYL] The following news are registered:");
@@ -58,6 +59,11 @@ public class NewsCommand implements ConsoleCommand{
                     SmaylUser author = userService.getUserById(smaylNews.getAuthorId());
                     System.out.println("> " +  smaylNews.getId() + ": " + smaylNews.getTitle() + " (" + author.getUsername() + ")");
                 });
+            } else if (arguments[0].equals("add")) {
+                SmaylUser user = userService.getUserByUsername("n.koertingebe");
+                SmaylNews smaylNews = new SmaylNews("Testing Title", "Testing Description", user.getId(), System.currentTimeMillis());
+                newsService.saveNews(smaylNews);
+                System.out.println("[SMAYl] Successfully added news with the id: " + smaylNews.getId());
             }
         } else if (arguments.length == 2) {
             if (arguments[0].equals("delete")) {

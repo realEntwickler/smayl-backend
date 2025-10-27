@@ -35,6 +35,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>4.0.0-M3</version>
+        <relativePath/>
     </parent>
 
     <repositories>
@@ -77,22 +78,6 @@
                             <mainClass>rlp.hoev.smayl.backend.SmaylBackendApplication</mainClass>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
                 </configuration>
             </plugin>
             <plugin>
