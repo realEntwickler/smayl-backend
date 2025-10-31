@@ -51,7 +51,7 @@ public class StudyGroupsCommand implements ConsoleCommand {
         } else if (arguments.length == 1) {
             if (arguments[0].equalsIgnoreCase("list")) {
                 System.out.println("[SMAYL] The following study groups are listed:");
-                studyGroupService.getStudyGroups().forEach(s -> System.out.println("- " + s));
+                studyGroupService.getStudyGroups().forEach(s -> System.out.println("- " + s.getName() + " (" + s.getId() + ")"));
             } else {
                 System.out.println("[SMAYL] Wrong usage.");
             }

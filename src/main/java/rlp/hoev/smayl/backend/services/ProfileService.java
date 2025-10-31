@@ -53,7 +53,7 @@ public class ProfileService {
     }
 
     public List<SmaylProfile> getProfilesByStudyGroup(SmaylStudyGroup studyGroup) {
-        return profileRepository.findSmaylProfilesByStudyGroup(studyGroup.getName());
+        return profileRepository.findSmaylProfilesByStudyGroup(studyGroup.getId());
     }
 
     public List<SmaylProfile> getProfiles() {

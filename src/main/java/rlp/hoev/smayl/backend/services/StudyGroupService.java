@@ -34,7 +34,7 @@ public class StudyGroupService {
     }
 
     public SmaylStudyGroup getStudyGroup(String studyGroupName) {
-        return studyGroupRepository.findById(studyGroupName).orElse(null);
+        return studyGroupRepository.findSmaylStudyGroupByName(studyGroupName);
     }
 
     public void createStudyGroup(SmaylStudyGroup studyGroup) {

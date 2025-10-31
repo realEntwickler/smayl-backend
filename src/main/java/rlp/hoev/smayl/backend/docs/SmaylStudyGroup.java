@@ -17,12 +17,15 @@
 
 package rlp.hoev.smayl.backend.docs;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "studygroups")
 public class SmaylStudyGroup {
 
-    private String name;
+    @Id
+    private String _id;
+    private final String name;
 
     public SmaylStudyGroup(String name) {
         this.name = name;
@@ -32,7 +35,7 @@ public class SmaylStudyGroup {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getId() {
+        return _id;
     }
 }

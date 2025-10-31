@@ -23,4 +23,6 @@ import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 
 @Repository
 public interface StudyGroupRepository extends MongoRepository<SmaylStudyGroup, String> {
+
+    SmaylStudyGroup findSmaylStudyGroupByName(String name);
 }
