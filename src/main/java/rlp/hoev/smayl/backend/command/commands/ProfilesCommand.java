@@ -21,8 +21,6 @@ import org.springframework.stereotype.Component;
 import rlp.hoev.smayl.backend.docs.SmaylProfile;
 import rlp.hoev.smayl.backend.services.ProfileService;
 
-import java.util.Random;
-
 @Component
 public class ProfilesCommand implements ConsoleCommand{
 
@@ -52,9 +50,7 @@ public class ProfilesCommand implements ConsoleCommand{
         } else if (arguments.length == 1) {
             if (arguments[0].equals("list")) {
                 System.out.println("[SMAYL - Profiles] Following profiles are registered:");
-                profileService.getProfiles().forEach(smaylProfile -> {
-                    System.out.println("> " + smaylProfile.getDisplayName() + " (" + smaylProfile.getId() + "): " + smaylProfile.getEmailAddress() + " [ADMIN: " + smaylProfile.isAdministrative() + "]");
-                });
+                profileService.getProfiles().forEach(smaylProfile -> System.out.println("> " + smaylProfile.getDisplayName() + " (" + smaylProfile.getId() + "): " + smaylProfile.getEmailAddress() + " [ADMIN: " + smaylProfile.isAdministrative() + "]"));
             }
         } else if (arguments.length == 2) {
             if (arguments[0].equals("remove")) {

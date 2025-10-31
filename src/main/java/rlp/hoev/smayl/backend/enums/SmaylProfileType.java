@@ -21,5 +21,5 @@ public enum SmaylProfileType {
 
     STUDENT,
     LECTURER,
-    ADMINISTRATIVE_STAFF;
+    ADMINISTRATIVE_STAFF
 }
