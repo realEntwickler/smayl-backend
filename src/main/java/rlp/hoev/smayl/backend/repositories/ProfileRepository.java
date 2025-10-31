@@ -29,5 +29,5 @@ public interface ProfileRepository extends MongoRepository<SmaylProfile, String>
 
     List<SmaylProfile> findSmaylProfilesByProfileType(SmaylProfileType profileType);
 
-    List<SmaylProfile> findSmaylProfilesByStudyGroup(SmaylStudyGroup studyGroup);
+    List<SmaylProfile> findSmaylProfilesByStudyGroup(String studyGroup);
 }
