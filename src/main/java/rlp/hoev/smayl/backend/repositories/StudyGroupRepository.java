@@ -2,8 +2,8 @@
  *
  *  * (c) 2025 Nils Kevin Koerting-Eberhardt (realEntwickler)
  *  *
- *  * File: ProfileRepository.java
- *  * Created on: 31.10.25, 08:38
+ *  * File: StudyGroupRepository.java
+ *  * Created on: 31.10.25, 10:06
  *  *
  *  * This file is part of the project "smayl-backend".
  *  *
@@ -19,15 +19,7 @@ package rlp.hoev.smayl.backend.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import rlp.hoev.smayl.backend.docs.SmaylProfile;
-import rlp.hoev.smayl.backend.enums.SmaylProfileType;
-
-import java.util.List;
 
 @Repository
-public interface ProfileRepository extends MongoRepository<SmaylProfile, String> {
-
-    List<SmaylProfile> findSmaylProfilesByProfileType(SmaylProfileType profileType);
-
-    List<SmaylProfile> findSmaylProfilesByStudyGroup(SmaylStudyGroup studyGroup);
+public interface StudyGroupRepository extends MongoRepository<String, String> {
 }

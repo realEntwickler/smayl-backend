@@ -32,12 +32,12 @@ public class SmaylProfile {
     private final String emailAddress;
     private final String displayName;
     private String licensePlate;
-    private SmaylStudyGroup studyGroup;
+    private String studyGroup;
     private SmaylProfileType profileType;
     private boolean administrative;
     private final long timestamp;
 
-    public SmaylProfile(String id, String firstName, String lastName, String emailAddress, String displayName, String licensePlate, SmaylStudyGroup studyGroup, SmaylProfileType profileType, boolean administrative, long timestamp) {
+    public SmaylProfile(String id, String firstName, String lastName, String emailAddress, String displayName, String licensePlate, String studyGroup, SmaylProfileType profileType, boolean administrative, long timestamp) {
         this._id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -66,11 +66,11 @@ public class SmaylProfile {
         this.profileType = profileType;
     }
 
-    public SmaylStudyGroup getStudyGroup() {
+    public String getStudyGroup() {
         return studyGroup;
     }
 
-    public void setStudyGroup(SmaylStudyGroup studyGroup) {
+    public void setStudyGroup(String studyGroup) {
         this.studyGroup = studyGroup;
     }
 

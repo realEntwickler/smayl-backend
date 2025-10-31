@@ -19,7 +19,6 @@ package rlp.hoev.smayl.backend.services;
 
 import org.springframework.stereotype.Service;
 import rlp.hoev.smayl.backend.docs.SmaylProfile;
-import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 import rlp.hoev.smayl.backend.enums.SmaylProfileType;
 import rlp.hoev.smayl.backend.repositories.ProfileRepository;
 
