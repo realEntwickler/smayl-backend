@@ -18,6 +18,7 @@
 package rlp.hoev.smayl.backend.services;
 
 import org.springframework.stereotype.Service;
+import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 import rlp.hoev.smayl.backend.repositories.StudyGroupRepository;
 
 import java.util.List;
@@ -32,15 +33,19 @@ public class StudyGroupService {
         this.studyGroupRepository = studyGroupRepository;
     }
 
-    public void createStudyGroup(String studyGroup) {
+    public SmaylStudyGroup getStudyGroup(String studyGroupName) {
+        return studyGroupRepository.findById(studyGroupName).orElse(null);
+    }
+
+    public void createStudyGroup(SmaylStudyGroup studyGroup) {
         studyGroupRepository.save(studyGroup);
     }
 
-    public void deleteStudyGroup(String studyGroup) {
-        studyGroupRepository.deleteById(studyGroup);
+    public void deleteStudyGroup(SmaylStudyGroup studyGroup) {
+        studyGroupRepository.delete(studyGroup);
     }
 
-    public List<String> getStudyGroups() {
+    public List<SmaylStudyGroup> getStudyGroups() {
         return studyGroupRepository.findAll();
     }
 }

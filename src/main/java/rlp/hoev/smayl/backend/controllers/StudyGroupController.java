@@ -19,6 +19,7 @@ package rlp.hoev.smayl.backend.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 import rlp.hoev.smayl.backend.services.StudyGroupService;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class StudyGroupController {
     }
 
     @GetMapping("/studygroups")
-    public List<String> getStudyGroups() {
+    public List<SmaylStudyGroup> getStudyGroups() {
         return studyGroupService.getStudyGroups();
     }
 }

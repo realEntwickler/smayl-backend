@@ -18,6 +18,7 @@
 package rlp.hoev.smayl.backend.command.commands;
 
 import org.springframework.stereotype.Component;
+import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 import rlp.hoev.smayl.backend.services.StudyGroupService;
 
 @Component
@@ -56,17 +57,19 @@ public class StudyGroupsCommand implements ConsoleCommand {
             }
         } else if (arguments.length == 2) {
             if (arguments[0].equalsIgnoreCase("add")) {
-                String studyGroupName = arguments[1];
-                if (!studyGroupService.getStudyGroups().contains(studyGroupName)) {
-                    studyGroupService.createStudyGroup(studyGroupName);
-                    System.out.println("[SMAYL] The study group \"" + studyGroupName + "\" has been added.");
+                SmaylStudyGroup studyGroup = studyGroupService.getStudyGroup(arguments[1]);
+                if (studyGroup == null) {
+                    studyGroup = new SmaylStudyGroup(arguments[1]);
+                    studyGroupService.createStudyGroup(studyGroup);
+                    System.out.println("[SMAYL] The study group \"" + studyGroup.getName() + "\" has been added.");
                 } else {
                     System.out.println("[SMAYL] This study group does already exist.");
                 }
             } else if (arguments[0].equalsIgnoreCase("delete")) {
-                String studyGroupName = arguments[1];
-                if (studyGroupService.getStudyGroups().contains(studyGroupName)) {
-                    studyGroupService.deleteStudyGroup(studyGroupName);
+                SmaylStudyGroup studyGroup = studyGroupService.getStudyGroup(arguments[1]);
+                if (studyGroup != null) {
+                    studyGroupService.deleteStudyGroup(studyGroup);
+                    System.out.println("[SMAYL] The study group has been deleted.");
                 } else {
                     System.out.println("[SMAYL] This study group does not exist.");
                 }

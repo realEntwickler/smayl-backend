@@ -19,7 +19,8 @@ package rlp.hoev.smayl.backend.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 
 @Repository
-public interface StudyGroupRepository extends MongoRepository<String, String> {
+public interface StudyGroupRepository extends MongoRepository<SmaylStudyGroup, String> {
 }

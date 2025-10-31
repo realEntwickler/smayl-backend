@@ -19,6 +19,7 @@ package rlp.hoev.smayl.backend.services;
 
 import org.springframework.stereotype.Service;
 import rlp.hoev.smayl.backend.docs.SmaylProfile;
+import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 import rlp.hoev.smayl.backend.enums.SmaylProfileType;
 import rlp.hoev.smayl.backend.repositories.ProfileRepository;
 
@@ -51,7 +52,7 @@ public class ProfileService {
         return profileRepository.findSmaylProfilesByProfileType(profileType);
     }
 
-    public List<SmaylProfile> getProfilesByStudyGroup(String studyGroup) {
+    public List<SmaylProfile> getProfilesByStudyGroup(SmaylStudyGroup studyGroup) {
         return profileRepository.findSmaylProfilesByStudyGroup(studyGroup);
     }
 
