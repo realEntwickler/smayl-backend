@@ -20,7 +20,6 @@ package rlp.hoev.smayl.backend.repositories;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import rlp.hoev.smayl.backend.docs.SmaylProfile;
-import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 import rlp.hoev.smayl.backend.enums.SmaylProfileType;
 
 import java.util.List;
@@ -30,5 +29,5 @@ public interface ProfileRepository extends MongoRepository<SmaylProfile, String>
 
     List<SmaylProfile> findSmaylProfilesByProfileType(SmaylProfileType profileType);
 
-    List<SmaylProfile> findSmaylProfilesByStudyGroup(SmaylStudyGroup studyGroup);
+    List<SmaylProfile> findSmaylProfilesByStudyGroup(String studyGroup);
 }
