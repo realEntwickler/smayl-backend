@@ -19,9 +19,7 @@ package rlp.hoev.smayl.backend.command.commands;
 
 import org.springframework.stereotype.Component;
 import rlp.hoev.smayl.backend.docs.SmaylNews;
-import rlp.hoev.smayl.backend.docs.SmaylUser;
 import rlp.hoev.smayl.backend.services.NewsService;
-import rlp.hoev.smayl.backend.services.UserService;
 
 @Component
 public class NewsCommand implements ConsoleCommand{

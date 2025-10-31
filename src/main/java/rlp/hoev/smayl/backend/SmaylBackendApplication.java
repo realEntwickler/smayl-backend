@@ -27,7 +27,6 @@ public class SmaylBackendApplication {
         printLauncherMessage();
 
         SpringApplication.run(SmaylBackendApplication.class, arguments);
-
     }
 
     private static void printLauncherMessage() {
