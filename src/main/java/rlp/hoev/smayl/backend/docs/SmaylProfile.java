@@ -35,8 +35,9 @@ public class SmaylProfile {
     private SmaylStudyGroup studyGroup;
     private SmaylProfileType profileType;
     private boolean administrative;
+    private final long timestamp;
 
-    public SmaylProfile(String id, String firstName, String lastName, String emailAddress, String displayName, String licensePlate, SmaylStudyGroup studyGroup, SmaylProfileType profileType, boolean administrative) {
+    public SmaylProfile(String id, String firstName, String lastName, String emailAddress, String displayName, String licensePlate, SmaylStudyGroup studyGroup, SmaylProfileType profileType, boolean administrative, long timestamp) {
         this._id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,6 +47,7 @@ public class SmaylProfile {
         this.studyGroup = studyGroup;
         this.profileType = profileType;
         this.administrative = administrative;
+        this.timestamp = timestamp;
     }
 
     public String getFirstName() {
@@ -98,5 +100,9 @@ public class SmaylProfile {
 
     public void setAdministrative(boolean administrative) {
         this.administrative = administrative;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
     }
 }
