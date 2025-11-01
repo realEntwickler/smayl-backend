@@ -17,8 +17,10 @@
 
 package rlp.hoev.smayl.backend.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import rlp.hoev.smayl.backend.docs.SmaylProfile;
 import rlp.hoev.smayl.backend.enums.SmaylProfileType;
@@ -36,8 +38,13 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    public SmaylProfile getProfile(@PathVariable String id) {
-        return profileService.getProfile(id);
+    public ResponseEntity<SmaylProfile> getProfile(@PathVariable String id) {
+        SmaylProfile profile = profileService.getProfile(id);
+
+        if (profile == null) {
+            ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(profile);
     }
 
     @GetMapping("/students")
