@@ -2,8 +2,8 @@
  *
  *  * (c) 2025 Nils Kevin Koerting-Eberhardt (realEntwickler)
  *  *
- *  * File: UserRepository.java
- *  * Created on: 25.10.25, 11:31
+ *  * File: StudyGroupRepository.java
+ *  * Created on: 31.10.25, 10:06
  *  *
  *  * This file is part of the project "smayl-backend".
  *  *
@@ -19,11 +19,10 @@ package rlp.hoev.smayl.backend.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import rlp.hoev.smayl.backend.docs.SmaylUser;
+import rlp.hoev.smayl.backend.docs.SmaylStudyGroup;
 
 @Repository
-public interface UserRepository extends MongoRepository<SmaylUser, String> {
+public interface StudyGroupRepository extends MongoRepository<SmaylStudyGroup, String> {
 
-    SmaylUser findByEmailAddress(String emailAddress);
-    SmaylUser findByUsername(String username);
+    SmaylStudyGroup findSmaylStudyGroupByName(String name);
 }
