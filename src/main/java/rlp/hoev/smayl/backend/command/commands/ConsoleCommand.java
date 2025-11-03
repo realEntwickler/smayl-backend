@@ -21,5 +21,6 @@ public interface ConsoleCommand {
 
     String getName();
     String getDescription();
+    String[] getAliases();
     void onCommand(String[] arguments);
 }

@@ -40,10 +40,19 @@ public class HelpCommand implements ConsoleCommand{
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[]{"?"};
+    }
+
+    @Override
     public void onCommand(String[] arguments) {
         System.out.println("[SMAYL] The following commands are supported:");
         commandRegistry.getCommandList().forEach(consoleCommand -> {
-            System.out.println("> \"" + consoleCommand.getName() + "\" - " + consoleCommand.getDescription());
+            String cmdAndAlias = consoleCommand.getName() + ",";
+            for (String alias : consoleCommand.getAliases()){
+                cmdAndAlias = cmdAndAlias.concat(alias);
+            }
+            System.out.println("> \"" + cmdAndAlias + "\" - " + consoleCommand.getDescription());
         });
     }
 }

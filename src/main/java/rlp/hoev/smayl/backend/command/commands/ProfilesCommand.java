@@ -42,11 +42,16 @@ public class ProfilesCommand implements ConsoleCommand{
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[]{"p"};
+    }
+
+    @Override
     public void onCommand(String[] arguments) {
         if (arguments.length == 0) {
-            System.out.println("[SMAYL] Usage of \"users\":");
-            System.out.println("> users list - Shows you a list of all users");
-            System.out.println("> users remove <ID> - Removes a profile");
+            System.out.println("[SMAYL] Usage of \"profiles\":");
+            System.out.println("> profiles list - Shows you a list of all profiles");
+            System.out.println("> profiles remove <ID> - Removes a profile");
         } else if (arguments.length == 1) {
             if (arguments[0].equals("list")) {
                 System.out.println("[SMAYL - Profiles] Following profiles are registered:");

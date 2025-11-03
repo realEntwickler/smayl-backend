@@ -46,6 +46,11 @@ public class ExitCommand implements ConsoleCommand{
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[]{"stop", "shutdown"};
+    }
+
+    @Override
     public void onCommand(String[] arguments) {
         if (arguments.length == 0) {
             System.out.println("[SMAYL] Do you really want to shutdown  the application? Write: \"exit confirm\"");

@@ -42,6 +42,11 @@ public class StudyGroupsCommand implements ConsoleCommand {
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[]{"sg"};
+    }
+
+    @Override
     public void onCommand(String[] arguments) {
         if (arguments.length == 0) {
             System.out.println("[SMAYL] Usage of \"studygroups\":");

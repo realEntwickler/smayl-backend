@@ -46,6 +46,11 @@ public class NewsCommand implements ConsoleCommand{
     }
 
     @Override
+    public String[] getAliases() {
+        return new String[]{"n"};
+    }
+
+    @Override
     public void onCommand(String[] arguments) {
         if (arguments.length == 0) {
             System.out.println("[SMAYL] Usage of \"news\":");

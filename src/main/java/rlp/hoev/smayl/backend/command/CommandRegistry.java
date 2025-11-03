@@ -40,7 +40,7 @@ public class CommandRegistry {
         if (args.length == 0) return;
 
         String name = args[0].toLowerCase();
-        Optional<ConsoleCommand> first = commandList.stream().filter(consoleCommand -> consoleCommand.getName().equalsIgnoreCase(name)).findFirst();
+        Optional<ConsoleCommand> first = commandList.stream().filter(consoleCommand -> consoleCommand.getName().equalsIgnoreCase(name) || Arrays.stream(consoleCommand.getAliases()).toList().contains(name)).findFirst();
         if (first.isPresent()) {
             first.get().onCommand(Arrays.copyOfRange(args, 1, args.length));
         } else {
