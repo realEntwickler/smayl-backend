@@ -17,11 +17,9 @@
 
 package rlp.hoev.smayl.backend.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rlp.hoev.smayl.backend.docs.SmaylProfile;
 import rlp.hoev.smayl.backend.enums.SmaylProfileType;
 import rlp.hoev.smayl.backend.services.ProfileService;
@@ -52,5 +50,23 @@ public class ProfileController {
         return profileService.getProfilesByProfileType(SmaylProfileType.STUDENT);
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<SmaylProfile> createProfile(@RequestBody SmaylProfile profile) {
+        if (profileService.getProfile(profile.getId()) != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } else {
+            profileService.createProfile(profile);
+            return Respon
+        }
+        return ResponseEntity.ok().build();
+    }
 
+    @GetMapping(value = "/getdisplayname", params = "id")
+    public String getDisplayName(@PathVariable String id) {
+        SmaylProfile profile = profileService.getProfile(id);
+        if (profile == null) {
+            return "NOT_FOUND";
+        }
+        return profile.getDisplayName();
+    }
 }

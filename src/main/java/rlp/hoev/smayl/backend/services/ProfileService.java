@@ -35,6 +35,10 @@ public class ProfileService {
         this.profileRepository = profileRepository;
     }
 
+    public void createProfile (SmaylProfile profile) {
+        profileRepository.insert(profile);
+    }
+
     public void saveProfile (SmaylProfile profile) {
         profileRepository.save(profile);
     }
