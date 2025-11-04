@@ -37,8 +37,8 @@ public class SmaylProfile {
     private boolean administrative;
     private final long timestamp;
 
-    public SmaylProfile(String id, String firstName, String lastName, String emailAddress, String displayName, String licensePlate, String studyGroup, SmaylProfileType profileType, boolean administrative, long timestamp) {
-        this._id = id;
+    public SmaylProfile(String _id, String firstName, String lastName, String emailAddress, String displayName, String licensePlate, String studyGroup, SmaylProfileType profileType, boolean administrative, long timestamp) {
+        this._id = _id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;

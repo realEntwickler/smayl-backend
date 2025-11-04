@@ -18,6 +18,7 @@
 package rlp.hoev.smayl.backend.controllers;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rlp.hoev.smayl.backend.docs.SmaylProfile;
@@ -26,7 +27,8 @@ import rlp.hoev.smayl.backend.services.ProfileService;
 
 import java.util.List;
 
-@RestController("/profile")
+@RestController
+@RequestMapping("/profile")
 public class ProfileController {
 
     private final ProfileService profileService;
@@ -40,9 +42,10 @@ public class ProfileController {
         SmaylProfile profile = profileService.getProfile(id);
 
         if (profile == null) {
-            ResponseEntity.notFound().build();
+            return ResponseEntity.status(404).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(profile);
         }
-        return ResponseEntity.ok(profile);
     }
 
     @GetMapping("/students")
@@ -50,13 +53,14 @@ public class ProfileController {
         return profileService.getProfilesByProfileType(SmaylProfileType.STUDENT);
     }
 
-    @PostMapping("/create")
+    @PostMapping(path = "/create", headers = "Content-Type=application/json")
     public ResponseEntity<SmaylProfile> createProfile(@RequestBody SmaylProfile profile) {
+        System.out.println("Creating profile: " + profile.getId());
         if (profileService.getProfile(profile.getId()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } else {
             profileService.createProfile(profile);
-            return ResponseEntity.ok(profile);
+            return ResponseEntity.status(HttpStatus.CREATED).body(profile);
         }
     }
 

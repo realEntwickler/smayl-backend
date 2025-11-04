@@ -49,7 +49,8 @@ public class ProfileService {
 
     public SmaylProfile getProfile (String id) {
         Optional<SmaylProfile> profile = profileRepository.findById(id);
-        return profile.orElse(null);
+        if (profile.isPresent()) return profile.get();
+         else return null;
     }
 
     public List<SmaylProfile> getProfilesByProfileType(SmaylProfileType profileType) {
