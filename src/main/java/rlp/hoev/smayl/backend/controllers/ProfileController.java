@@ -56,9 +56,8 @@ public class ProfileController {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } else {
             profileService.createProfile(profile);
-            return Respon
+            return ResponseEntity.ok(profile);
         }
-        return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "/getdisplayname", params = "id")
